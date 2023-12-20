@@ -1,6 +1,6 @@
 const { customAlphabet } = require('nanoid');//Библиотека Nano ID в версии 5 работает только с ESM проектами, но 3 версия еще поддерживается и работает с СommonJS. Вместо функции nanoid() она предоставляет метод customAlphabet() для создания пользовательской функции генерации идентификаторов.
 const fs = require("node:fs/promises");
-const path = require("path");
+const path = require("node:path");
 const contactsPath = path.join(__dirname, "db", "contacts.json");
 
 // TODO: задокументировать каждую функцию
