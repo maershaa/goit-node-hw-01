@@ -44,7 +44,14 @@ async function getContactById(contactId) {
     if (index === -1) {
         return null;
     }
-    const [result] = contacts.splice(index, 1);
+
+
+    const [result] = contacts.splice(index, 1);//мутируем обьект contacts так как splice  изменяет исходный массив
+
+//если не хотим мутировать обьект contacts то используем slice, который можно использовать для создания обновленной копии массива таким образом:
+// const updatedContacts = contacts.slice(0, index).concat(contacts.slice(index + 1));
+// const removedContact = contacts[index];
+
     await updateContacts(contacts);
     return result;
   }
@@ -62,8 +69,29 @@ async function getContactById(contactId) {
       return newContact;
 }
 
+// ! Не предусмотрено домашней работой
+async function updateContact(id, updatedContact) {
+  const contacts = await listContacts();
+  const index = contacts.findIndex((item) => item.id === id);
+
+  if (index === -1) {
+    return null;
+  }
+
+  const originalContact = contacts[index];  // Получаем оригинальный контакт из списка
+
+  // Создаем новый контакт, объединяя оригинальный контакт с обновленными данными
+  const newContact = { ...originalContact, ...updatedContact };
+
+  contacts[index] = newContact;  // Заменяем оригинальный контакт на новый контакт в массиве контактов
+
+  await updateContacts(contacts);
+  return newContact;
+}
+
+
   module.exports ={
-    listContacts, getContactById, removeContact, addContact
+    listContacts, getContactById, removeContact, addContact, updateContact
   }
 
 
@@ -80,3 +108,7 @@ async function getContactById(contactId) {
 
 // # Удаляем контакт и выводим в консоль удаленный контакт или null, если контакта с таким id не существует.
 // node index.js --action remove --id qdggE76Jtbfd9eWJHrssH
+
+
+// # Обновляем существующий контакт и выводим его в консоль.
+// node index.js --action=update --id=rsKkOQUi80UsgVPCcLZZW --name=Marishka --email=Marishka@gmail.com --phone=0937635489
