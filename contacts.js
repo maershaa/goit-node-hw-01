@@ -4,7 +4,6 @@ const path = require("node:path");
 
 // если бы нам нужно было прописать подняться на 1 уровень выше в папку, то мы бы писали ".." и выглядело бы вот так :
 // const contactsPath = path.join(__dirname, "..", "db", "contacts.json");
-
 const contactsPath = path.join(__dirname,  "db", "contacts.json");
 
 console.log('__dirname', __dirname); // Вывод информации о текущей папке
@@ -23,7 +22,7 @@ const updateContacts = contacts => fs.writeFile(contactsPath, JSON.stringify(con
 
 
 async function listContacts() {
-  const data = await fs.readFile(contactsPath, 'utf-8');
+  const data = await fs.readFile(contactsPath, {encoding: "utf-8"}); //или можно без encoding таким образом const data = await fs.readFile(contactsPath, 'utf-8');
   return JSON.parse(data);
 }
 
