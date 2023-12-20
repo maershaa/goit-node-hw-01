@@ -110,5 +110,7 @@ async function updateContact(id, updatedContact) {
 // node index.js --action remove --id qdggE76Jtbfd9eWJHrssH
 
 
-// # Обновляем существующий контакт и выводим его в консоль.
+// # Обновляем существующий контакт и выводим его в консоль. 
+// !ЭТО ИДЕНТИЧНЫЕ ЗАПИСИ  ПРОСТО ОДНА КОРОТКАЯ А ДРУГАЯ ДЛИННАЯ:
 // node index.js --action=update --id=rsKkOQUi80UsgVPCcLZZW --name=Marishka --email=Marishka@gmail.com --phone=0937635489
+// node index.js -a update -i rsKkOQUi80UsgVPCcLZZW -n Marishka -e Marishka@gmail.com -p 0937635489
