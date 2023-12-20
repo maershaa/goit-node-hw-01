@@ -1,7 +1,15 @@
 const { customAlphabet } = require('nanoid');//Библиотека Nano ID в версии 5 работает только с ESM проектами, но 3 версия еще поддерживается и работает с СommonJS. Вместо функции nanoid() она предоставляет метод customAlphabet() для создания пользовательской функции генерации идентификаторов.
 const fs = require("node:fs/promises");
 const path = require("node:path");
-const contactsPath = path.join(__dirname, "db", "contacts.json");
+
+// если бы нам нужно было прописать подняться на 1 уровень выше в папку, то мы бы писали ".." и выглядело бы вот так :
+// const contactsPath = path.join(__dirname, "..", "db", "contacts.json");
+
+const contactsPath = path.join(__dirname,  "db", "contacts.json");
+
+console.log('__dirname', __dirname); // Вывод информации о текущей папке
+console.log('__filename', __filename); // Вывод информации о текущем файле
+
 
 // TODO: задокументировать каждую функцию
 
